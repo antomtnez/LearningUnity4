@@ -8,15 +8,21 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public List<GameObject> targetPrefabs;
+    public GameObject titleScreen;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
-    public Button restartButton;
 
     private float _spawnRate = 1f;
     private int _score;
     public bool isGameActive;
 
     void Start(){
+        
+    }
+
+    public void StartGame(int difficulty){
+        _spawnRate /= difficulty;
+        titleScreen.SetActive(false);
         isGameActive = true;
         _score = 0;
         UpdateScoreText(_score);
